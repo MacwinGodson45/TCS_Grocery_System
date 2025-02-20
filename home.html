@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Groceries System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <button class="nav-btn" onclick="showSection('home')">Home</button>
+        <button class="nav-btn" onclick="showSection('cart')">Cart</button>
+        <button class="nav-btn" onclick="showSection('profile')">My Profile</button>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h2>Available Groceries</h2>
+        <div class="product-list">
+            <!-- 10 Random Grocery Items -->
+            <div class="product" data-name="Rice" data-price="30">
+                <p>Rice - $30</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Milk" data-price="10">
+                <p>Milk - $10</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Bread" data-price="15">
+                <p>Bread - $15</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Eggs" data-price="20">
+                <p>Eggs - $20</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Apples" data-price="25">
+                <p>Apples - $25</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Bananas" data-price="10">
+                <p>Bananas - $10</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Tomatoes" data-price="12">
+                <p>Tomatoes - $12</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Potatoes" data-price="18">
+                <p>Potatoes - $18</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Chicken" data-price="40">
+                <p>Chicken - $40</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Fish" data-price="35">
+                <p>Fish - $35</p>
+                <button onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section id="cart" style="display: none;">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <h3>Total: $<span id="total-price">0</span></h3>
+        <button onclick="checkout()">Checkout</button>
+    </section>
+
+    <!-- My Profile Section -->
+    <section id="profile" style="display: none;">
+        <h2>My Profile</h2>
+        <label>First Name:</label>
+        <input type="text" id="first-name" disabled>
+        <label>Last Name:</label>
+        <input type="text" id="last-name" disabled>
+        <label>Email:</label>
+        <input type="email" id="email" disabled>
+        <button onclick="enableEdit()">Update</button>
+        <button onclick="saveProfile()" id="save-btn" style="display: none;">Save</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
