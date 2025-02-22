@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Customer Login</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <p class="error-message" id="error-message"></p>
+            <button type="submit">Login</button>
+        </form>
+        <p>New User? <a href="register.html">Register yourself</a></p>
+    </div>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let errorMessage = document.getElementById("error-message");
+
+            // Retrieve stored credentials
+            let storedEmail = localStorage.getItem("registeredEmail");
+            let storedPassword = localStorage.getItem("registeredPassword");
+
+            errorMessage.textContent = "";
+
+            if (!storedEmail || !storedPassword) {
+                errorMessage.textContent = "No registered user found. Please register.";
+                return;
+            }
+
+            if (email !== storedEmail && password !== storedPassword) {
+                errorMessage.textContent = "ID/Password not valid";
+                return;
+            }
+
+            if (email !== storedEmail) {
+                errorMessage.textContent = "E-mail ID not valid";
+                return;
+            }
+
+            if (password !== storedPassword) {
+                errorMessage.textContent = "Password not valid";
+                return;
+            }
+
+            // Successful login - Redirect to home page
+            window.location.href = "home.html";
+        });
+    </script>
+</body>
+</html>

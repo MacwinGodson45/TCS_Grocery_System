@@ -1,0 +1,126 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: #f4f4f9; /* Soft Light Gray */
+    color: #333; /* Dark Gray for text */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+/* Header Navigation */
+header {
+    background: #0056b3; /* Professional Dark Blue */
+    padding: 15px;
+}
+
+.nav-btn {
+    background: grey;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.nav-btn:hover {
+    background: #ddd;
+}
+
+/* Sections */
+section {
+    padding: 20px;
+    background: white;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+}
+
+/* Buttons */
+button {
+    background: #007bff; /* Soft Blue */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Form Fields */
+input {
+    width: 25%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Product List */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.product {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    width: 150px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Adds space between items */
+    align-items: center; /* Centers the items */
+}
+
+.cart-items div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%; /* Adjust width as needed */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.cart-items button {
+    display: block;
+    margin: 5px auto; /* Centers buttons */
+}
+
+/* Error & Success Messages */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    color: green;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
