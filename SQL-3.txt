@@ -1,0 +1,52 @@
+--Product Table.
+--Table creation.
+CREATE TABLE Product (
+    Product_ID NUMBER PRIMARY KEY NOT NULL,
+    Product_Name VARCHAR2(255) NOT NULL,
+    Price NUMBER NOT NULL,
+    Quantity NUMBER NOT NULL,
+    Reserved CHAR(1) NOT NULL CHECK (Reserved IN ('Y', 'N')),
+    Customer_ID NUMBER NOT NULL,
+    CONSTRAINT fk_product_registration FOREIGN KEY (Customer_ID)
+        REFERENCES Registration(Customer_ID) ON DELETE CASCADE
+);
+
+INSERT INTO Product (Product_ID, Product_Name, Price, Quantity, Reserved, Customer_ID)
+VALUES (1001, 'Rice', 1200, 10, 'N', 1);
+
+INSERT INTO Product (Product_ID, Product_Name, Price, Quantity, Reserved, Customer_ID)
+VALUES (1002, 'Milk', 800, 15, 'Y', 2);
+
+INSERT INTO Product (Product_ID, Product_Name, Price, Quantity, Reserved, Customer_ID)
+VALUES (1003, 'Bread', 500, 20, 'N', 3);
+
+INSERT INTO Product (Product_ID, Product_Name, Price, Quantity, Reserved, Customer_ID)
+VALUES (1004, 'Eggs', 1500, 5, 'Y', 4);
+
+INSERT INTO Product (Product_ID, Product_Name, Price, Quantity, Reserved, Customer_ID)
+VALUES (1005, 'Chicken', 300, 12, 'N', 5);
+
+INSERT INTO Product (Product_ID, Product_Name, Price, Quantity, Reserved, Customer_ID)
+VALUES (1006, 'Tomatoes', 50, 50, 'N', 6);
+
+INSERT INTO Product (Product_ID, Product_Name, Price, Quantity, Reserved, Customer_ID)
+VALUES (1007, 'Potatoes', 30, 60, 'Y', 7);
+
+INSERT INTO Product (Product_ID, Product_Name, Price, Quantity, Reserved, Customer_ID)
+VALUES (1008, 'Fish', 200, 8, 'N', 8);
+
+INSERT INTO Product (Product_ID, Product_Name, Price, Quantity, Reserved, Customer_ID)
+VALUES (1009, 'Laptop', 250, 7, 'Y', 9);
+
+INSERT INTO Product (Product_ID, Product_Name, Price, Quantity, Reserved, Customer_ID)
+VALUES (1010, 'Smartphone', 100, 25, 'N', 10);
+
+--Display distinct products
+SELECT DISTINCT Product_Name, Price 
+FROM Product;
+
+--Customer and Product mapping
+SELECT r.Customer_ID, r.Customer_Name, p.Product_ID, p.Product_Name 
+FROM Registration r
+JOIN Product p ON r.Customer_ID = p.Customer_ID
+ORDER BY r.Customer_ID;

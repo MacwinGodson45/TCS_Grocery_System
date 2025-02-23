@@ -1,0 +1,52 @@
+--Transaction Table.
+--Table creation.
+CREATE TABLE Transaction (
+    Transaction_ID INT PRIMARY KEY NOT NULL,
+    Customer_ID INT NOT NULL,
+    Product_ID INT NOT NULL,
+    Total_Amount INT NOT NULL,
+    No_of_Items INT NOT NULL,
+    FOREIGN KEY (Customer_ID) REFERENCES Registration(Customer_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Product_ID) REFERENCES Product(Product_ID) ON DELETE CASCADE
+);
+
+INSERT INTO Transaction (Transaction_ID, Customer_ID, Product_ID, Total_Amount, No_of_Items)
+VALUES (1, 1, 1001, 1200, 1);
+
+INSERT INTO Transaction (Transaction_ID, Customer_ID, Product_ID, Total_Amount, No_of_Items)
+VALUES (2, 2, 1002, 1600, 2);
+
+INSERT INTO Transaction (Transaction_ID, Customer_ID, Product_ID, Total_Amount, No_of_Items)
+VALUES (3, 3, 1003, 1500, 3);
+
+INSERT INTO Transaction (Transaction_ID, Customer_ID, Product_ID, Total_Amount, No_of_Items)
+VALUES (4, 4, 1004, 3000, 2);
+
+INSERT INTO Transaction (Transaction_ID, Customer_ID, Product_ID, Total_Amount, No_of_Items)
+VALUES (5, 5, 1005, 600, 2);
+
+INSERT INTO Transaction (Transaction_ID, Customer_ID, Product_ID, Total_Amount, No_of_Items)
+VALUES (6, 6, 1006, 100, 5);
+
+INSERT INTO Transaction (Transaction_ID, Customer_ID, Product_ID, Total_Amount, No_of_Items)
+VALUES (7, 7, 1007, 90, 3);
+
+INSERT INTO Transaction (Transaction_ID, Customer_ID, Product_ID, Total_Amount, No_of_Items)
+VALUES (8, 8, 1008, 400, 1);
+
+INSERT INTO Transaction (Transaction_ID, Customer_ID, Product_ID, Total_Amount, No_of_Items)
+VALUES (9, 9, 1009, 500, 2);
+
+INSERT INTO Transaction (Transaction_ID, Customer_ID, Product_ID, Total_Amount, No_of_Items)
+VALUES (10, 10, 1010, 2500, 4);
+
+--Display transactions sorted in descending order.
+SELECT * 
+FROM Transaction
+ORDER BY Total_Amount DESC;
+
+--Transaction with second highest amount.
+SELECT * 
+FROM Transaction
+ORDER BY Total_Amount DESC
+OFFSET 1 ROW FETCH NEXT 1 ROWS ONLY;

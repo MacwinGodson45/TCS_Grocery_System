@@ -1,0 +1,54 @@
+--Admin Table.
+--Table Creation.
+CREATE TABLE Admin (
+    Admin_ID INT PRIMARY KEY NOT NULL,
+    Admin_Password VARCHAR(255) NOT NULL,
+    Customer_ID INT NOT NULL,
+    Product_ID INT NOT NULL,
+    Transaction_ID INT NOT NULL,
+    FOREIGN KEY (Customer_ID) REFERENCES Registration(Customer_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Product_ID) REFERENCES Product(Product_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Transaction_ID) REFERENCES Transaction(Transaction_ID) ON DELETE CASCADE
+);
+
+INSERT INTO Admin (Admin_ID, Admin_Password, Customer_ID, Product_ID, Transaction_ID)
+VALUES (1, 'adminPass1', 1, 1001, 1);
+
+INSERT INTO Admin (Admin_ID, Admin_Password, Customer_ID, Product_ID, Transaction_ID)
+VALUES (2, 'adminPass2', 2, 1002, 2);
+
+INSERT INTO Admin (Admin_ID, Admin_Password, Customer_ID, Product_ID, Transaction_ID)
+VALUES (3, 'adminPass3', 3, 1003, 3);
+
+INSERT INTO Admin (Admin_ID, Admin_Password, Customer_ID, Product_ID, Transaction_ID)
+VALUES (4, 'adminPass4', 4, 1004, 4);
+
+INSERT INTO Admin (Admin_ID, Admin_Password, Customer_ID, Product_ID, Transaction_ID)
+VALUES (5, 'adminPass5', 5, 1005, 5);
+
+INSERT INTO Admin (Admin_ID, Admin_Password, Customer_ID, Product_ID, Transaction_ID)
+VALUES (6, 'adminPass6', 6, 1006, 6);
+
+INSERT INTO Admin (Admin_ID, Admin_Password, Customer_ID, Product_ID, Transaction_ID)
+VALUES (7, 'adminPass7', 7, 1007, 7);
+
+INSERT INTO Admin (Admin_ID, Admin_Password, Customer_ID, Product_ID, Transaction_ID)
+VALUES (8, 'adminPass8', 8, 1008, 8);
+
+INSERT INTO Admin (Admin_ID, Admin_Password, Customer_ID, Product_ID, Transaction_ID)
+VALUES (9, 'adminPass9', 9, 1009, 9);
+
+INSERT INTO Admin (Admin_ID, Admin_Password, Customer_ID, Product_ID, Transaction_ID)
+VALUES (10, 'adminPass10', 10, 1010, 10);
+
+--Query to Display Customer Details, Transaction ID & Product Names for Successful Orders
+SELECT r.Customer_ID, 
+       r.Customer_Name, 
+       t.Transaction_ID, 
+       p.Product_Name, 
+       t.Total_Amount, 
+       t.No_of_Items
+FROM Transaction t
+JOIN Registration r ON t.Customer_ID = r.Customer_ID
+JOIN Product p ON t.Product_ID = p.Product_ID
+ORDER BY t.Transaction_ID DESC;

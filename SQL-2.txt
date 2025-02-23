@@ -1,0 +1,62 @@
+--Registration Table
+--Table creation.
+CREATE TABLE Registration (
+    Customer_ID NUMBER PRIMARY KEY NOT NULL,
+    Customer_Name VARCHAR2(255) NOT NULL,
+    Email VARCHAR2(255) NOT NULL,
+    Password VARCHAR2(255) NOT NULL,
+    Address VARCHAR2(255) NOT NULL,
+    Contact_Number NUMBER NOT NULL
+);
+
+
+INSERT INTO Registration (Customer_ID, Customer_Name, Email, Password, Address, Contact_Number)
+VALUES (1, 'John', 'john@email.com', 'password123', 
+        '123 Main St, New York, US', 9876543210);
+
+INSERT INTO Registration (Customer_ID, Customer_Name, Email, Password, Address, Contact_Number)
+VALUES (2, 'Priya', 'priya@email.com', 'securepass', 
+        'RZ/12-4, Mahavir Enclave, New Delhi, INDIA', 9876543211);
+
+INSERT INTO Registration (Customer_ID, Customer_Name, Email, Password, Address, Contact_Number)
+VALUES (3, 'Mark', 'mark@email.com', 'markpass456', 
+        '45 Palm St, California, US', 9876543212);
+
+INSERT INTO Registration (Customer_ID, Customer_Name, Email, Password, Address, Contact_Number)
+VALUES (4, 'Rahul', 'rahul@email.com', 'rahulpass789', 
+        'Sector 21, Gurgaon, INDIA', 9876543213);
+
+INSERT INTO Registration (Customer_ID, Customer_Name, Email, Password, Address, Contact_Number)
+VALUES (5, 'Emily', 'emily@email.com', 'emilypass999', 
+        '789 Bay Area, Texas, US', 9876543214);
+
+INSERT INTO Registration (Customer_ID, Customer_Name, Email, Password, Address, Contact_Number)
+VALUES (6, 'Amit', 'amit@email.com', 'amitsecure', 
+        'MG Road, Bangalore, INDIA', 9876543215);
+
+INSERT INTO Registration (Customer_ID, Customer_Name, Email, Password, Address, Contact_Number)
+VALUES (7, 'Sophia', 'sophia@email.com', 'sophiapass', 
+        '101 First Ave, Chicago, US', 9876543216);
+
+INSERT INTO Registration (Customer_ID, Customer_Name, Email, Password, Address, Contact_Number)
+VALUES (8, 'Liam', 'liam@email.com', 'liampass', 
+        '202 Second St, Los Angeles, US', 9876543217);
+
+INSERT INTO Registration (Customer_ID, Customer_Name, Email, Password, Address, Contact_Number)
+VALUES (9, 'Olivia', 'olivia@email.com', 'oliviapass', 
+        '303 Third Blvd, San Francisco, US', 9876543218);
+
+INSERT INTO Registration (Customer_ID, Customer_Name, Email, Password, Address, Contact_Number)
+VALUES (10, 'Noah', 'noah@email.com', 'noahpass', 
+        '404 Fourth Rd, Houston, US', 9876543219);
+
+--Customer name updation based on their residency.
+UPDATE Registration
+SET Customer_Name =
+    CASE 
+        WHEN Address LIKE '%US%' THEN 'US_' || Customer_Name
+        WHEN Address LIKE '%INDIA%' THEN 'IN_' || Customer_Name
+        ELSE Customer_Name
+    END;
+
+SELECT * FROM Registration;

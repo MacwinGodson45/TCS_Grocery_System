@@ -1,0 +1,50 @@
+--Login Table.
+--Table creation.
+CREATE TABLE Login (
+    Customer_ID NUMBER NOT NULL,
+    Last_Login TIMESTAMP NOT NULL,
+    Last_Logout TIMESTAMP NOT NULL,
+    Updated_Password VARCHAR2(255) NOT NULL,
+    Old_Password VARCHAR2(255) NOT NULL,
+    Is_now_logged_in CHAR(1) NOT NULL CHECK (Is_now_logged_in IN ('Y', 'N')),
+    CONSTRAINT pk_login PRIMARY KEY (Customer_ID)
+);
+
+INSERT INTO Login (Customer_ID, Last_Login, Last_Logout, Updated_Password, Old_Password, Is_now_logged_in) 
+VALUES (201, TO_DATE('2025-02-20 08:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2025-02-20 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'NewPass#201', 'OldPass#201', 'N');
+
+INSERT INTO Login (Customer_ID, Last_Login, Last_Logout, Updated_Password, Old_Password, Is_now_logged_in) 
+VALUES (202, TO_DATE('2025-02-21 09:15:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2025-02-21 11:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'NewPass#202', 'OldPass#202', 'Y');
+
+INSERT INTO Login (Customer_ID, Last_Login, Last_Logout, Updated_Password, Old_Password, Is_now_logged_in) 
+VALUES (203, TO_DATE('2025-02-22 14:45:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2025-02-22 15:20:00', 'YYYY-MM-DD HH24:MI:SS'), 'NewPass#203', 'OldPass#203', 'N');
+
+INSERT INTO Login (Customer_ID, Last_Login, Last_Logout, Updated_Password, Old_Password, Is_now_logged_in) 
+VALUES (204, TO_DATE('2025-02-23 07:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2025-02-23 08:20:00', 'YYYY-MM-DD HH24:MI:SS'), 'NewPass#204', 'OldPass#204', 'Y');
+
+INSERT INTO Login (Customer_ID, Last_Login, Last_Logout, Updated_Password, Old_Password, Is_now_logged_in) 
+VALUES (205, TO_DATE('2025-02-24 12:10:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2025-02-24 13:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'NewPass#205', 'OldPass#205', 'Y');
+
+INSERT INTO Login (Customer_ID, Last_Login, Last_Logout, Updated_Password, Old_Password, Is_now_logged_in) 
+VALUES (206, TO_DATE('2025-02-25 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2025-02-25 17:30:00', 'YYYY-MM-DD HH24:MI:SS'), 'NewPass#206', 'OldPass#206', 'N');
+
+INSERT INTO Login (Customer_ID, Last_Login, Last_Logout, Updated_Password, Old_Password, Is_now_logged_in) 
+VALUES (207, TO_DATE('2025-02-26 11:20:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2025-02-26 12:50:00', 'YYYY-MM-DD HH24:MI:SS'), 'NewPass#207', 'OldPass#207', 'Y');
+
+SELECT * FROM Login;
+
+--List of first 50% logged in IDs.
+WITH LoggedInCustomers AS (
+    SELECT 
+        Customer_ID,
+        ROW_NUMBER() OVER (ORDER BY Last_Login ASC) AS rn,
+        COUNT(*) OVER () AS total
+    FROM Login
+    WHERE Is_now_logged_in = 'Y'
+)
+SELECT Customer_ID
+FROM LoggedInCustomers
+WHERE rn <= CEIL(total / 2);
+
+
+
